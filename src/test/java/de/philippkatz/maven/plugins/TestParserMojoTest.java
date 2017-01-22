@@ -46,5 +46,21 @@ public class TestParserMojoTest {
 		assertEquals(2, logResult.split("\n").length);
 		assertTrue(logResult.contains("Tests run: 9, Failures: 0, Errors: 0, Skipped: 0"));
 	}
+	
+	@Test
+	public void testTestParserMojoWithSkipsShouldNotBeTreatedAsFailures() {
+		TestParserMojo mojo = new TestParserMojo();
+		mojo.resultsDirectory = new File(getClass().getResource("/sampleResults-skipped").getFile());
+		MockLog mockLog = new MockLog();
+		mojo.setLog(mockLog);
+		try {
+			mojo.execute();
+		} catch (MojoExecutionException e) {
+			fail();
+		}
+		String logResult = mockLog.getLog();
+		assertEquals(2, logResult.split("\n").length);
+		assertTrue(logResult.contains("Tests run: 10, Failures: 0, Errors: 0, Skipped: 1"));
+	}
 
 }

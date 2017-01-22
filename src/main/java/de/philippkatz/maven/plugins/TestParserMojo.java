@@ -23,6 +23,8 @@ import org.apache.maven.reporting.MavenReportException;
  */
 @Mojo(name = "testparser")
 public class TestParserMojo extends AbstractMojo {
+	
+	private static final String SKIPPED = "skipped";
 
 	/** Directory which contains the reports. */
 	@Parameter(property = "testparser.resultsDirectory", required = true)
@@ -53,6 +55,9 @@ public class TestParserMojo extends AbstractMojo {
 			}
 			for (ReportTestCase testCase : testSuite.getTestCases()) {
 				if (testCase.hasFailure()) {
+					if (testCase.getFailureType().equals(SKIPPED)) {
+						continue;
+					}
 					failures.add(testCase.getFullName());
 				}
 			}
