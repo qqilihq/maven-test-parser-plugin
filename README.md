@@ -1,4 +1,5 @@
 [![Run Status](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/badge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
+[![Coverage Badge](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/coverageBadge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
 
 This [Maven][3] plugin solves the following issue which I described in [this][2] Stack Overflow question:
 
