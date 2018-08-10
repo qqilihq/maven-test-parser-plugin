@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class TestParserMojoTest {
 		assertEquals(2, logResult.split("\n").length);
 		assertTrue(logResult.contains("Tests run: 9, Failures: 0, Errors: 0, Skipped: 0"));
 	}
-	
+
 	@Test
 	public void testTestParserMojoWithSkipsShouldNotBeTreatedAsFailures() {
 		TestParserMojo mojo = new TestParserMojo();
@@ -61,6 +62,20 @@ public class TestParserMojoTest {
 		String logResult = mockLog.getLog();
 		assertEquals(2, logResult.split("\n").length);
 		assertTrue(logResult.contains("Tests run: 10, Failures: 0, Errors: 0, Skipped: 1"));
+	}
+
+	/**
+	 * Tests whether recursive collection of result folders works correctly.
+	 * 
+	 * @throws MojoExecutionException
+	 *             Fails the test if anything unexpected goes wrong.
+	 */
+	@Test
+	public void testTestParserMojoWithNestedResultFiles() throws MojoExecutionException {
+		File resultsDirectory = new File(getClass().getResource("/sampleResults-nested").getFile());
+		List<File> directories = TestParserMojo.collectReportDirectoriesRecursively(resultsDirectory);
+
+		assertEquals(4, directories.size());
 	}
 
 }
