@@ -2,7 +2,6 @@ package de.philippkatz.maven.plugins;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class TestParserMojo extends AbstractMojo {
 			throw new MojoExecutionException(resultsDirectory + " is not a directory");
 		}
 		getLog().debug("Checking test results in " + resultsDirectory);
-		List<File> reportDirectories = Collections.singletonList(resultsDirectory);
+		List<File> reportDirectories = collectReportDirectoriesRecursively(resultsDirectory);
 		SurefireReportParser parser = new SurefireReportParser(reportDirectories, Locale.getDefault());
 		List<ReportTestSuite> parsedReports;
 		try {
@@ -85,6 +84,36 @@ public class TestParserMojo extends AbstractMojo {
 		if (!failures.isEmpty()) {
 			throw new MojoExecutionException("There were test failures.");
 		}
+	}
+
+	/**
+	 * Walks over a tree of directories and recursively adds all these directories to a list of <code>File</code> objects.
+	 * 
+	 * @param rootDirectory The root directory from where to start the search for sub directories.
+	 * @return A <code>List</code> of the directory provided as root and all its sub directories.
+	 * @throws MojoExecutionException 
+	 */
+	static List<File> collectReportDirectoriesRecursively(final File rootDirectory) throws MojoExecutionException {
+		if (rootDirectory == null) {
+			throw new MojoExecutionException("No valid directory provided");
+		}
+		if (!rootDirectory.exists()) {
+			throw new MojoExecutionException("Directory " + rootDirectory + " does not exist");
+		}
+		if (!rootDirectory.isDirectory()) {
+			throw new MojoExecutionException("Directory " + rootDirectory + " is no directory");
+		}
+		
+		List<File> ret = new ArrayList<>();
+		ret.add(rootDirectory);
+		
+		for (File child : rootDirectory.listFiles()) {
+			if (child.isDirectory()) {
+				ret.addAll(collectReportDirectoriesRecursively(child));
+			}
+		}
+		
+		return ret;
 	}
 
 	private void logLines(List<String> lines) {
