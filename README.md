@@ -3,6 +3,7 @@ Test Parser Plugin for Maven
 
 [![Run Status](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/badge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
 [![Coverage Badge](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/coverageBadge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.philippkatz.maven.plugins/test-parser-plugin/badge.svg)](http://mvnrepository.com/artifact/de.philippkatz.maven.plugins/test-parser-plugin)
 
 About
 -----
