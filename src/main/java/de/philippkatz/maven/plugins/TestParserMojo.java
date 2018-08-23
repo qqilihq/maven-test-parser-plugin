@@ -20,7 +20,7 @@ import org.apache.maven.reporting.MavenReportException;
  * 
  * @author Philipp Katz
  */
-@Mojo(name = "testparser")
+@Mojo(name = "testparser", requiresProject = false)
 public class TestParserMojo extends AbstractMojo {
 	
 	private static final String SKIPPED = "skipped";
