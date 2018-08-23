@@ -15,6 +15,6 @@ build:
     - echo "$GPG_SECRET_KEY_BASE64" | base64 --decode | gpg --import -
     # only use -P uploadRepo when (1) on master branch, (2) no pull request
     - if [ "$BRANCH" == "master" ] && [ "$IS_PULL_REQUEST" == false ]; then MAVEN_PROFILE="-P release"; fi
-    - mvn -Dhttps.protocols=TLSv1.2 -V -B -s settings.xml clean install $MAVEN_PROFILE
+    - mvn -Dhttps.protocols=TLSv1.2 -V -B -s settings.xml clean deploy $MAVEN_PROFILE
     - cp -r target/surefire-reports shippable/testresults
     - cp -r target/site/jacoco shippable/codecoverage
