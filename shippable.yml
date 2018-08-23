@@ -16,5 +16,11 @@ build:
     # only use -P uploadRepo when (1) on master branch, (2) no pull request
     - if [ "$BRANCH" == "master" ] && [ "$IS_PULL_REQUEST" == false ]; then MAVEN_PROFILE="-P release"; fi
     - mvn -Dhttps.protocols=TLSv1.2 -V -B -s settings.xml clean deploy $MAVEN_PROFILE
+
+  on_success:
+    - cp -r target/surefire-reports shippable/testresults
+    - cp -r target/site/jacoco shippable/codecoverage
+
+  on_failure:
     - cp -r target/surefire-reports shippable/testresults
     - cp -r target/site/jacoco shippable/codecoverage
