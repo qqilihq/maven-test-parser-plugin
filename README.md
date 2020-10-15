@@ -1,8 +1,8 @@
 Test Parser Plugin for Maven
 ============================
 
-[![Run Status](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/badge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
-[![Coverage Badge](https://api.shippable.com/projects/58d7cb2ca8fea50500f12d34/coverageBadge?branch=master)](https://app.shippable.com/github/qqilihq/maven-test-parser-plugin)
+[![Actions Status](https://github.com/qqilihq/maven-test-parser-plugin/workflows/CI/badge.svg)](https://github.com/qqilihq/maven-test-parser-plugin/actions)
+[![codecov](https://codecov.io/gh/qqilihq/maven-test-parser-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/qqilihq/maven-test-parser-plugin)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.philippkatz.maven.plugins/test-parser-plugin/badge.svg)](http://mvnrepository.com/artifact/de.philippkatz.maven.plugins/test-parser-plugin)
 
 About
@@ -70,7 +70,7 @@ opening a new [issue][2].
 
 - - -
 
-Copyright (c) 2017, 2018 Philipp Katz
+Copyright (c) 2017 – 2020, Philipp Katz
 
 
   [1]: http://maven.40175.n5.nabble.com/How-to-parse-JUnit-report-xml-that-causes-build-to-pass-fail-td5433750.html
