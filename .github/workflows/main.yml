@@ -38,4 +38,9 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./target/site/jacoco/jacoco.xml
+          fail_ci_if_error: true
+
       # TODO parse surefire reports
