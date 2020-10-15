@@ -30,7 +30,7 @@ Usage
 
 Add it to your `pom.xml` within the `<build>` section as follows and specify the `resultsDirectory` which contains the XML files with the test results. The plugin will also parse XML files within subdirectories.
 
-```
+```xml
   <build>
     <plugins>
       <plugin>
@@ -57,7 +57,7 @@ Add it to your `pom.xml` within the `<build>` section as follows and specify the
 
 In case you want to use it stand alone without a Maven project, you can still execute the plugin directly on the command line. Pass the path to the results directory with the `-Dtestparser.resultsDirectory` parameter:
 
-```
+```shell
 $ mvn de.philippkatz.maven.plugins:test-parser-plugin:3.1.0:testparser -Dtestparser.resultsDirectory=./testflow-reports
 ```
 
