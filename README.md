@@ -70,7 +70,7 @@ opening a new [issue][2].
 
 - - -
 
-Copyright (c) 2017 – 2020, Philipp Katz
+Copyright (c) 2017 – 2025, Philipp Katz
 
 
   [1]: http://maven.40175.n5.nabble.com/How-to-parse-JUnit-report-xml-that-causes-build-to-pass-fail-td5433750.html
