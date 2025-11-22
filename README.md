@@ -61,6 +61,15 @@ In case you want to use it stand alone without a Maven project, you can still ex
 $ mvn de.philippkatz.maven.plugins:test-parser-plugin:3.1.0:testparser -Dtestparser.resultsDirectory=./testflow-reports
 ```
 
+Deploy to Repository
+--------------------
+
+Add the `settings.xml` to the repository and run:
+
+```
+mvn --settings settings.xml deploy -P release
+```
+
 Contributing
 ------------
 
