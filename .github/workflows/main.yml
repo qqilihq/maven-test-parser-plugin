@@ -19,23 +19,26 @@ jobs:
       - uses: actions/checkout@v2
 
       # https://github.com/marketplace/actions/setup-java-jdk#publishing-using-apache-maven
-      - uses: actions/setup-java@v1
+      - uses: actions/setup-java@v4
         with:
-          java-version: '8'
-          server-id: ossrh
-          server-username: OSSRH_USERNAME
-          server-password: OSSRH_PASSWORD
+          java-version: '17'
+          distribution: zulu
+          server-id: central
+          server-username: CENTRAL_USERNAME
+          server-password: CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
 
-      - name: Build (and publish to Sonatype OSSRH when on master)
+      - name: Build (and publish to Maven Central when on master)
         run: |
+          # MAVEN_TASK="verify"
           # only use -P release when on master branch
-          if [ ${GITHUB_REF#refs/heads/} == "master" ]; then MAVEN_PROFILE="deploy -P release"; fi
-          mvn -V -B clean install $MAVEN_PROFILE
+          # if [ ${GITHUB_REF#refs/heads/} == "master" ]; then MAVEN_TASK="deploy -P release"; fi
+          # mvn -V -B $MAVEN_TASK
+          mvn -V -B deploy -P release
         env:
-          OSSRH_USERNAME: qqilihq
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - uses: codecov/codecov-action@v1
