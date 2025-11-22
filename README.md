@@ -3,7 +3,7 @@ Test Parser Plugin for Maven
 
 [![Actions Status](https://github.com/qqilihq/maven-test-parser-plugin/workflows/CI/badge.svg)](https://github.com/qqilihq/maven-test-parser-plugin/actions)
 [![codecov](https://codecov.io/gh/qqilihq/maven-test-parser-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/qqilihq/maven-test-parser-plugin)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.philippkatz.maven.plugins/test-parser-plugin/badge.svg)](http://mvnrepository.com/artifact/de.philippkatz.maven.plugins/test-parser-plugin)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.philippkatz/test-parser-maven-plugin/badge.svg)](http://mvnrepository.com/artifact/de.philippkatz/test-parser-maven-plugin)
 
 About
 -----
