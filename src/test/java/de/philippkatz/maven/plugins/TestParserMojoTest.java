@@ -47,7 +47,7 @@ public class TestParserMojoTest {
 		assertEquals(2, logResult.split("\n").length);
 		assertTrue(logResult.contains("Tests run: 9, Failures: 0, Errors: 0, Skipped: 0"));
 	}
-	
+
 	@Test
 	public void testTestParserMojoWithSkipsShouldNotBeTreatedAsFailures() {
 		TestParserMojo mojo = new TestParserMojo();
@@ -66,7 +66,7 @@ public class TestParserMojoTest {
 
 	/**
 	 * Tests whether recursive collection of result folders works correctly.
-	 * 
+	 *
 	 * @throws MojoExecutionException
 	 *             Fails the test if anything unexpected goes wrong.
 	 */
