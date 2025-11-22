@@ -36,7 +36,7 @@ Add it to your `pom.xml` within the `<build>` section as follows and specify the
       <plugin>
         <groupId>de.philippkatz</groupId>
         <artifactId>test-parser-maven-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.1.2</version>
         <configuration>
           <resultsDirectory>${project.build.directory}/testflow-reports</resultsDirectory>
         </configuration>
