@@ -17,12 +17,12 @@ import org.apache.maven.reporting.MavenReportException;
 
 /**
  * Goal to parse JUnit-style XML results.
- * 
+ *
  * @author Philipp Katz
  */
 @Mojo(name = "testparser", requiresProject = false)
 public class TestParserMojo extends AbstractMojo {
-	
+
 	private static final String SKIPPED = "skipped";
 
 	/** Directory which contains the reports. */
@@ -71,8 +71,8 @@ public class TestParserMojo extends AbstractMojo {
 		}
 		Map<String, String> summary = parser.getSummary(parsedReports);
 		getLog().info(String.format("Tests run: %s, Failures: %s, Errors: %s, Skipped: %s",
-				summary.get("totalTests"), 
-				summary.get("totalFailures"), 
+				summary.get("totalTests"),
+				summary.get("totalFailures"),
 				summary.get("totalErrors"),
 				summary.get("totalSkipped")));
 		if (!errors.isEmpty() && !failures.isEmpty()) {
@@ -88,10 +88,10 @@ public class TestParserMojo extends AbstractMojo {
 
 	/**
 	 * Walks over a tree of directories and recursively adds all these directories to a list of <code>File</code> objects.
-	 * 
+	 *
 	 * @param rootDirectory The root directory from where to start the search for sub directories.
 	 * @return A <code>List</code> of the directory provided as root and all its sub directories.
-	 * @throws MojoExecutionException 
+	 * @throws MojoExecutionException
 	 */
 	static List<File> collectReportDirectoriesRecursively(final File rootDirectory) throws MojoExecutionException {
 		if (rootDirectory == null) {
@@ -103,16 +103,16 @@ public class TestParserMojo extends AbstractMojo {
 		if (!rootDirectory.isDirectory()) {
 			throw new MojoExecutionException("Directory " + rootDirectory + " is no directory");
 		}
-		
+
 		List<File> ret = new ArrayList<>();
 		ret.add(rootDirectory);
-		
+
 		for (File child : rootDirectory.listFiles()) {
 			if (child.isDirectory()) {
 				ret.addAll(collectReportDirectoriesRecursively(child));
 			}
 		}
-		
+
 		return ret;
 	}
 
