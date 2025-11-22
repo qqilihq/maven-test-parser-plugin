@@ -31,11 +31,10 @@ jobs:
 
       - name: Build (and publish to Maven Central when on master)
         run: |
-          # MAVEN_TASK="verify"
+          MAVEN_TASK="verify"
           # only use -P release when on master branch
-          # if [ ${GITHUB_REF#refs/heads/} == "master" ]; then MAVEN_TASK="deploy -P release"; fi
-          # mvn -V -B $MAVEN_TASK
-          mvn -V -B deploy -P release
+          if [ ${GITHUB_REF#refs/heads/} == "master" ]; then MAVEN_TASK="deploy -P release"; fi
+          mvn -V -B $MAVEN_TASK
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
